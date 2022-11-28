@@ -46,7 +46,18 @@ module HybridAutomata
 
     function add_flow(automato::Automata,mode::Int,flow::Function)
         idx = findfirst(==(mode),automato.flow_map[:,1])
-        automato.guard_map[idx,2] = flow
+        automato.flow_map[idx,2] = flow
+    end
+
+    function solve(automato::Automata,initial_condition::Float32,initial_state::Int,interval::StepRange)
+        z = [initial_condition]
+        q = initial_state
+        for i ∈ interval
+            idx = findfirst(==(q),automato.flow_map[:,1])
+            new_z = automato.flow_map[idx,2](z)
+            push!(z,new_z)
+        end
+        return z
     end
 
     export make_edges
