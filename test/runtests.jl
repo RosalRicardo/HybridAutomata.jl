@@ -22,6 +22,7 @@ HybridAutomata.add_flow(termostato,1,z->0.95z)
 HybridAutomata.add_flow(termostato,2,z->1.10z)
 HybridAutomata.add_flow(termostato,3,z->1.50z)
 
+termostato.flow_map
 
 @testset "HybridAutomata.jl" begin
     # Write your tests here.
