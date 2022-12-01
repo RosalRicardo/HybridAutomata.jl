@@ -6,15 +6,15 @@ ir order to define an automata its is needed to import the library `HybridAutoma
 
 
 
-## Estados discretos
+## Discrete States
 
-Primeiramente é necessário um conjunto de estados finitos, que a partir de agora chamaremos de conjunto $Q$, esses estados são interpretados como os estados discretos do sistema, onde a transição ocorre por saltos disparados por eventos discretos definidos posteriormente e são representados da seguinte forma.
+First, a set of finite states is needed, which from now on we will call the $Q$ set, these states are interpreted as the discrete states of the system, where the transition occurs by jumps triggered by discrete events defined later and are represented as follows.
 
 $$
     Q = \{q_1,q_2,...,q_{max}\}
 $$
 
-## Estados continuos
+## Continuos States
 
 
 
