@@ -49,7 +49,7 @@ module HybridAutomata
         automato.flow_map[idx,2] = flow
     end
 
-    function solve(automato::Automata,initial_condition::Float64,initial_state::Int,interval::StepRange)
+    function solve(automato::Automata,initial_condition::Float64,initial_state::Int,interval::StepRange,parameters::Vector)
         z = [initial_condition]
         q = initial_state
         for i ∈ interval
@@ -59,7 +59,7 @@ module HybridAutomata
             for edge ∈ automato.guard_map[:,1]
                 q_idx = findfirst(==(edge),automato.guard_map[:,1])
                 if first(edge) == q && automato.guard_map[q_idx,2] != 0
-                    automato.guard_map[q_idx,2](z[end],24,18) ? q = edge.second : q = edge.first
+                    automato.guard_map[q_idx,2](z[end],parameters) ? q = edge.second : q = edge.first
                 end
             end
         end
@@ -70,4 +70,3 @@ module HybridAutomata
     export add_guard
     export add_flow
 end
-
