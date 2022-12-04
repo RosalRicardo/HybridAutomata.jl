@@ -21,7 +21,7 @@ HybridAutomata.add_guard(termostato,2=>3,(z,parameters) -> (z <= parameters[2]) 
 
 termostato.guard_map
 
-HybridAutomata.add_flow(termostato,1,z->-1.5z)
+HybridAutomata.add_flow(termostato,1,z->0.65z)
 HybridAutomata.add_flow(termostato,2,z->1.10z)
 HybridAutomata.add_flow(termostato,3,z->1.50z)
 
