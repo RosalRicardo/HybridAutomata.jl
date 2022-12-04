@@ -7,7 +7,7 @@ module HybridAutomata
         edges::Vector{Pair} = []
         guard_map::Matrix{Any} = Array{Any}(undef, 0, 0)
         flow_map::Matrix{Any} = Array{Any}(undef, 0, 0)
-        reset_map::Vector{Function} = []
+        reset_map::Matrix{Any} = Array{Any}(undef, 0, 0)
     end
 
     function Automata(discrete_states::Dict{Any,Any},continuos_states::Dict{Any,Any})
@@ -32,10 +32,11 @@ module HybridAutomata
                 push!(edges,i => j)
             end
         end
-        guard_map = zeros(size(edges)[1])
+        zero_reset_guard = zeros(size(edges)[1])
         automata.edges = edges
-        automata.guard_map = hcat(edges,guard_map)
+        automata.guard_map = hcat(edges,zero_reset_guard)
         automata.flow_map = hcat(estados_discretos,zeros(size(estados_discretos)[1]))
+        automata.reset_map = hcat(edges,zero_reset_guard)
         return edges
     end
 
@@ -44,9 +45,14 @@ module HybridAutomata
         automato.guard_map[idx,2] = guard
     end
 
-    function add_flow(automato::Automata,mode::Int,flow::Function)
+    function add_flow(automato::Automata,mode::Int,flow::Vector{Function})
         idx = findfirst(==(mode),automato.flow_map[:,1])
         automato.flow_map[idx,2] = flow
+    end
+
+    function add_reset(automato::Automata,edge::Pair,reset::Vector{Function})
+        idx = findfirst(==(edge),automato.guard_map[:,1])
+        automato.reset_map[idx,2] = reset
     end
 
     function solve(automato::Automata,initial_condition::Float64,initial_state::Int,interval::StepRange,parameters::Vector)
