@@ -50,12 +50,41 @@ module HybridAutomata
         automato.flow_map[idx,2] = flow
     end
 
-    function add_reset(automato::Automata,edge::Pair,reset::Vector{Function})
+    function add_reset(automato::Automata,edge::Pair,reset::Function)
         idx = findfirst(==(edge),automato.guard_map[:,1])
         automato.reset_map[idx,2] = reset
     end
 
     function solve(automato::Automata,initial_condition::Float64,initial_state::Int,interval::StepRange,parameters::Vector)
+        z = [initial_condition]
+        q = initial_state
+        for i ∈ interval
+            idx = findfirst(==(q),automato.flow_map[:,1])
+            for state ∈ keys(automato.continuos_states)
+                idx_state = findfirst(==(state),collect(keys(automato.continuos_states)))
+                push!(automato.continuos_states[state],automato.flow_map[idx,2][idx_state](automato))
+            end
+
+            for edge ∈ automato.guard_map[:,1]
+                q_idx = findfirst(==(edge),automato.guard_map[:,1])
+                if first(edge) == q && automato.guard_map[q_idx,2] != 0
+                    if automato.guard_map[q_idx,2](automato,parameters) 
+                        q = edge.second
+                        reseted_z = automato.reset_map[q_idx,2](automato,parameters)
+                        z_list = collect(keys(automato.continuos_states))
+                        for i ∈ 1:size(z_list)[1]
+                            push!(automato.continuos_states[z_list[i]],reseted_z[i])    
+                        end
+                        q = edge.first
+                    end
+                end
+            end
+        end
+        return z
+    end
+
+
+    function solve_2(automato::Automata,initial_condition::Float64,initial_state::Int,interval::StepRange,parameters::Vector)
         z = [initial_condition]
         q = initial_state
         for i ∈ interval
