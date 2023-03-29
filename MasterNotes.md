@@ -31,7 +31,7 @@ Referencias Metodologicas
 ### Objective
 Apply Neural ODE to model thermal zones with lumped parameters model together with data in order to improve model predictive power, maintining generalization potential and interpretability
 
-apply neural ODE to model thermal zones with improved balanced between generalization and prection than determinic and black-box approaches.
+apply neural ODE to model thermal zones with improved balanced between generalization and prediction using a hybrid approach that encode the domain knowledge in the learning process than determinic and black-box approaches.
 
 ### Metodologia
 + gerar dados de simulacao de uma zona com sistema de hvac pelo energy plus e openstudio
