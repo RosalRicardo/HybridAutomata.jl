@@ -42,4 +42,7 @@ Apply Neural ODE to model thermal zones with lumped parameters model together wi
 ### Referencias de codigo
 + https://github.com/msurtsukov/neural-ode
   + implementacao em pytorch do paper seminal do neurIPS
-  + 
+
+### blog posts
++ https://ilya.schurov.com/post/adjoint-method/ 
+  + ajuda para entender o adjoint method
