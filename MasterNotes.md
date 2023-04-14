@@ -19,7 +19,8 @@ HVAC Modeling
 + https://www.sciencedirect.com/science/article/pii/S0360544204004761
   + detalhe do modelo da zona que sera aplicado por uma neural ODE
   + paper seminal de aproximadamente 20 anos que ainda e o estado da arte para modelagem de zonas termicas
-
+  + referecia para apoio argumentativo para lacuna e metodologia.
+   + https://arxiv.org/abs/2001.04385  
 Referencias Metodologicas
 + https://www.mdpi.com/2076-3417/12/14/6880
   + aplicacao de MPC para controle de AHU MASD para sistema de VAV com reducao de consumo de energia de ~30%
