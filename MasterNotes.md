@@ -28,6 +28,8 @@ Referencias Metodologicas
 + https://arxiv.org/pdf/2301.03376.pdf
   + modelagem de ocupacao de uma zona termina para aplica;'ao de MPC que gerou 50% de economia de energia
   + modelagem deterministica por um modelo de lumped parameters model
++ https://www.osti.gov/servlets/purl/1478744
+  + citacao de relatorio que mostra a lacuna na pesquisa de machine learning
 
 ### Objective
 Apply Neural ODE to model thermal zones with lumped parameters model together with data in order to improve model predictive power, maintining generalization potential and interpretability
