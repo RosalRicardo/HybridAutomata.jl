@@ -30,6 +30,8 @@ Referencias Metodologicas
   + modelagem deterministica por um modelo de lumped parameters model
 + https://www.osti.gov/servlets/purl/1478744
   + citacao de relatorio que mostra a lacuna na pesquisa de machine learning
++ https://docs.sciml.ai/Overview/dev/showcase/missing_physics/
+  + technical implementation tutorial UODE. missing physics discovery.  
 
 ### Objective
 Apply Neural ODE to model thermal zones with lumped parameters model together with data in order to improve model predictive power, maintining generalization potential and interpretability
